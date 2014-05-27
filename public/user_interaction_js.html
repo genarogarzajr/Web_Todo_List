@@ -1,0 +1,49 @@
+<html>
+
+<head>
+	<title>Exercise</title>
+</head>
+<body>
+<h2> user interaction Exercise</h2>
+<script type="text/javascript">
+
+// todo: Ask the user for their name.
+//       Keep asking if an empty input is provided.
+var response = prompt("what is your name?");
+while (response == "" || response == null)
+	
+	{
+		response = prompt("what is your name?");
+		// console.log("hello" + response);
+	} 
+		console.log("hello " + response);
+	
+
+// todo: Show an alert message that welcomes the user based on their input.
+
+alert("hello " + response);
+
+
+
+// todo: Ask the user if they like pizza.
+//       Based on their answer tell show a creative alert message.
+
+var confirmed = confirm(response + " do you like pizza?");
+	console.log(confirmed);
+	if (confirmed == true) 
+		{
+			console.log(" Yes, I like pizza too!");
+
+		} 
+		else console.log("Really?  who doesnt like pizza wierdo?");
+
+
+
+
+
+
+
+
+</script>
+
+</html>

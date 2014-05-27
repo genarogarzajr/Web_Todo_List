@@ -1,0 +1,39 @@
+<html>
+
+<head>
+	<title>Exercise</title>
+</head>
+<body>
+<h2>Break continue exercise</h2>
+
+
+<script type="text/javascript">
+
+
+
+var r = Math.floor((Math.random()*50)+1);
+
+	if (r % 2 == 0) {
+		r = Math.floor((Math.random()*50)+1);
+	};
+
+console.log("random number to skip: " + r);
+
+for ( var i = 1; i <= 50; i++) {
+	if (i % 2 !== 0  && r != i) {
+		console.log("here is an odd number: " + i);
+		continue;
+	}
+	else if (r == i) 
+	{
+		console.log("Yikes! Skipping number: " + r );
+
+	};
+
+}
+
+
+
+</script>
+
+</html>
