@@ -1,0 +1,50 @@
+<html>
+
+<head>
+	<title>If/Else Statements</title>
+</head>
+<body>
+<script type="text/javascript">
+
+var colors = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'];
+var color = colors[Math.floor(Math.random()*colors.length)];
+
+var favorite = 'blue'; // todo, change this to your favorite color from the list
+
+console.log(color)
+
+
+if (color == 'red') 
+	{
+	console.log("Red is the color of apples");
+	}
+	else if (color == 'orange')
+	{
+		console.log("orange is the color of oranges");
+	}
+	else if (color == 'yellow')
+	{
+		console.log("yellow is the color of bananas");
+	}
+	else if (color == 'green') 
+	{
+		console.log("green is the color of kiwi fruit");
+	}
+	else if (color == 'blue') 
+	{
+		console.log("blue is the color of the ocean");
+	}
+	else 
+		console.log("I do not know anything by that color.")
+
+var message = (color == favorite) ? "cool": "Aggies suck!" ;	
+color == (favorite) ? "This is my favorite color" : "Not my fav";
+
+console.log(message);
+
+</script>
+
+</body>
+</html>
+
+
