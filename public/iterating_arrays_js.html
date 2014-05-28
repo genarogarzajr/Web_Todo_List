@@ -1,0 +1,39 @@
+<html>
+
+<head>
+	<title>Array Exercise</title>
+</head>
+<body>
+<h2>Array Exercise</h2>
+<script type="text/javascript">
+
+// todo:
+// Create an array of 4 names using literal array notation, in a variable called 'names'.
+var fruits = ['apple','orange','banana','pear'];
+// todo:
+// Create a log statement that will log the number of elements in the names array.
+console.log(fruits.length);
+
+
+// todo:
+// Create log statements that will print each of the names array elements individually.
+// console.log(fruits[0]);
+// console.log(fruits[1]);
+// console.log(fruits[2]);
+// console.log(fruits[3]);
+
+//for loop
+for (i = 0; i < fruits.length; i++) {
+	
+	console.log("for: " + fruits[i]);
+}
+
+//foreach
+fruits.forEach(function(element, index, array){
+
+console.log("foreach: " + element);	
+});
+
+
+</script>
+</html>

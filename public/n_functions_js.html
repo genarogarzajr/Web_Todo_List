@@ -1,0 +1,96 @@
+<html>
+
+<head>
+	<title>Exercise</title>
+</head>
+<body>
+<h2>Exercise</h2>
+<script type="text/javascript">
+	
+
+//Global Variables
+//---------------------------------------	
+	// declare a global variable
+var globalVar = "Look, I'm Global!";
+
+	// call the say hello function
+sayHello();
+
+	// define the sayHello function
+function sayHello() {
+    // globalVar is accessible here since the sayHello function scope is a sub-scope of the global scope
+ alert(globalVar);
+}
+
+
+
+
+
+
+
+
+//Local Variables
+//-------------------------------------------
+
+	// declare a global variable
+var globalVar = "Look, I'm Global!";
+
+	// call the say hello function
+sayHello();
+
+	// define the sayHello function
+function sayHello() 
+{
+    	// declare a local variable
+    var localVar = "Look, I'm Local!";
+
+    	// localVar is accessible here
+    alert(localVar);
+
+    	// globalVar is accessible here
+    alert(globalVar);
+}
+
+	// localVar is NOT accessible here (out-of-scope) and this will produce an error
+alert(localVar);
+
+//---------------------------------
+
+//Hoisting
+
+	// declare a global variable
+var globalVar = "Look, I'm Global!";
+
+	// call the say hello function
+sayHello();
+
+	// define the sayHello function
+function sayHello() {
+    	// globalVar is undefined
+    alert(globalVar);
+
+    	// override globalVar with a local version
+    var globalVar = "Look, I'm Local globalVar!";
+
+    	// show the overridden message
+    alert(globalVar);
+}
+
+
+//------------------------------------------
+
+//Immediately-Invoked Function Expression
+// declare a function that will be invoked immediately
+// notice the parens surrounding the function. these are necessary
+(function () {
+    	// variables and functions in here are only accessible inside this function's sub-scope
+    var iffeVar = "I'm local to the IIFE.";
+}());
+// also notice the double parens after the closing curly brace. these invoke the function.
+
+alert(iffeVar); // undefined
+
+
+</script>
+
+</html>
