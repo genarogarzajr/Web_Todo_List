@@ -14,7 +14,8 @@ function open_file($x_filename)
     if (is_readable($x_filename) && filesize($x_filename) > 0) 
     {
         $handle = fopen($x_filename, "r");
-        $contents = fread($handle, filesize($x_filename));
+        $contents = (fread($handle, filesize($x_filename)));
+        $contents = trim($contents);
         fclose($handle);
         return $contents;
     }
@@ -32,29 +33,39 @@ function save_file($filename, $contents)
     $filename = "list.txt";
         //gets contents of file
     $todo_string = open_file($filename);
-        //converts string to array
+        //converts file contents string to array
     $list_array = explode("\n", $todo_string);
-        // merges opened items list with existing list
-    //$items = array_merge($items,$list_array);
 
-     
-array_push($list_array, $_POST["NewItem"]);
-foreach ($list_array as $value) 
-    {
-    echo "<li>$value</li>";
-    }
 
+ if (isset($_GET['index']))
+     {
+            //removes item from hyperlink
+        unset($list_array[$_GET['index']]);
+     }
+
+ if (!empty($_POST))
+    
+     {
+            //adds new item from submit
+        array_push($list_array, $_POST["NewItem"]);
+     }
+
+    //converts array to string for saving to file   
 $contents = implode("\n", $list_array);
-save_file($filename, $contents)
+save_file($filename, $contents);
 
-
-
+   //prints each item in array & adds remove link
+foreach ($list_array as $key => $value) 
+    {
+    echo "<li>$value <a href = 'todo_list.php?action=remove&index=$key'>remove</a></li>";
+    }
+    var_dump($list_array);
 
 ?>
 </ul>
 
 
-<form method="POST">
+<form method="POST" action="todo_list.php">
     <p>
         <label for="NewItem">New Todo item</label>
         <input id="NewItem" name="NewItem" type="text">
