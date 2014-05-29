@@ -1,24 +1,53 @@
 <html>
-
 <head>
 	<title>My HTML todo list</title>
 </head>
 <body>
-<?php
-        print_r($_GET);
-        echo PHP_EOL;
-        echo "....POST...." . PHP_EOL;
-        echo PHP_EOL;
-        print_r($_POST);
-    ?>
-
-
 <h1>TODO list</h1>
+
 <ul>
-	<li>Study PHP</li>
-	<li>Study HTML</li>
-	<li>Study CSS</li>
+<?php
+
+function open_file($x_filename)
+{
+    $list_array = [];
+    if (is_readable($x_filename) && filesize($x_filename) > 0) 
+    {
+        $handle = fopen($x_filename, "r");
+        $contents = fread($handle, filesize($x_filename));
+        fclose($handle);
+        return $contents;
+    }
+        $contents = implode("", $list_array);
+        return $contents;   
+}
+
+// >>>>>>>CODE STARTS HERE<<<<<<<<<<<<<<<<
+
+
+    $filename = "list.txt";
+        //gets contents of file
+    $todo_string = open_file($filename);
+        //converts string to array
+    $list_array = explode("\n", $todo_string);
+        // merges opened items list with existing list
+    //$items = array_merge($items,$list_array);
+
+     
+array_push($list_array, $_POST["NewItem"]);
+foreach ($list_array as $value) 
+    {
+    echo "<li>$value</li>";
+    }
+
+
+
+
+
+
+?>
 </ul>
+
 
 <form method="POST">
     <p>
@@ -31,7 +60,9 @@
     </p>
 </form>
 
+<?php
 
+?>
 
 
 </body>
