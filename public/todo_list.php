@@ -21,10 +21,14 @@ function open_file($x_filename)
         $contents = implode("", $list_array);
         return $contents;   
 }
-
+//--------------------------------------
+function save_file($filename, $contents)
+{
+    $handle = fopen($filename, "w");
+    fwrite($handle, $contents);
+    fclose($handle);
+}
 // >>>>>>>CODE STARTS HERE<<<<<<<<<<<<<<<<
-
-
     $filename = "list.txt";
         //gets contents of file
     $todo_string = open_file($filename);
@@ -40,7 +44,8 @@ foreach ($list_array as $value)
     echo "<li>$value</li>";
     }
 
-
+$contents = implode("\n", $list_array);
+save_file($filename, $contents)
 
 
 
@@ -59,11 +64,6 @@ foreach ($list_array as $value)
         <input type="submit">
     </p>
 </form>
-
-<?php
-
-?>
-
 
 </body>
 </html>
