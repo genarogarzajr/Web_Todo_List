@@ -86,8 +86,8 @@ if (count($_FILES) > 0 && $_FILES['file1']['error'] == 0)
 //6. converts array to string for saving to file   
 $contents = implode("\n", $list_array);
 save_file($filename, $contents);
-
 ?>
+
 <html>
 <head>
 	<title>My HTML todo list</title>
@@ -97,13 +97,12 @@ save_file($filename, $contents);
 
 <ul>
 
-<?php
-    //prints each item in array & adds remove link
-    foreach ($list_array as $key => $value) 
-    {
-        echo "<li>$value <a href = 'todo_list.php?action=remove&index=$key'>remove</a></li>";
-    }
-?>
+
+    <!-- prints each item in array & adds remove link -->
+ <?   foreach ($list_array as $key => $value): ?>    
+    <li><?=htmlspecialchars(strip_tags($value)); ?> <a href = 'todo_list.php?action=remove&amp;index=<?=$key?>'>remove</a></li>
+<?    endforeach; ?>
+
 
 </ul>
 
