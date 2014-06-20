@@ -1,7 +1,7 @@
 <?
 
 require_once("classes/filestore.php");
-
+class InvalidInputException extends Exception { }
 
 
 // >>>>>>>CODE STARTS HERE<<<<<<<<<<<<<<<<
@@ -25,10 +25,21 @@ if (isset($_GET['index']))
 //3. checks if item was added via POST
 if (!empty($_POST))
     { 
-       if (strlen($_POST['NewItem'])>10 || empty($_POST['NewItem'])) 
-            {
-                throw new Exception('$Item cannot be empty or greater than X characters');
-            }   
+       
+        try{
+                if (strlen($_POST['NewItem'])>10 || empty($_POST['NewItem'])) 
+                {
+                    throw new InvalidInputException("New Item cannot be empty or greater than X characters");
+                }   
+
+            } catch (InvalidInputException $e) 
+                    {
+                        echo "New Item cannot be empty or greater than X characters123";
+                    }
+
+           
+                    
+        
 
             //3a. adds new item from submit
         array_push($list_array, $_POST["NewItem"]);
