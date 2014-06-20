@@ -1,0 +1,22 @@
+<?php
+
+
+
+
+
+?>
+
+
+
+
+<html>
+
+<head>
+	<title>Exercise</title>
+</head>
+<body>
+<h2>Exercise</h2>
+<script type="text/javascript">
+</script>
+
+</html>

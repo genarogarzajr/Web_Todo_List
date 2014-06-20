@@ -1,0 +1,15 @@
+h1 {
+	text-decoration: underline;
+	color: #FFFFFF;
+}
+
+body { background-color: #002E4D;
+		color: #8C8B8A; 
+		background-image: url('../images/dallas2.jpg')
+
+	}
+
+ul{
+
+	list-style-image: url('/images/cowboys.png')
+}
