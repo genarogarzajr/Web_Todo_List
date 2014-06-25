@@ -9,7 +9,7 @@ body { background-color: #002E4D;
 
 	}
 
-ul{
+ul.cowboys {
 
 	list-style-image: url('/images/cowboys.png')
 }

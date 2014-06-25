@@ -9,35 +9,37 @@ class Filestore {
     {
         $this->filename = $filename;
         $check = substr($filename, -3);
-        if ($check == "csv") 
+        if ($check === "csv") 
         {
             $this->is_csv = true;
-        };
+        }
          
     }
 
 //--------------------------
-         public function read() 
-         {
-                if ($this->is_csv) 
-                { 
-                    return $this->read_csv();
-                }
-                else 
-                {
-                    return $this->read_lines();
-                }
+     public function read() 
+     {
+        if ($this->is_csv) 
+        { 
+            return $this->read_csv();
         }
-//---------------------------
-        public function write($array) 
+        else 
         {
-            if ($this->is_csv == false) 
-                {
-                  $this->write_lines($array);
-                }
-                else $this->write_csv($array);
-
+            return $this->read_lines();
         }
+    }
+//---------------------------
+    public function write($array) 
+    {
+        if ($this->is_csv === false) 
+        {
+          $this->write_lines($array);
+        }
+        else 
+        { 
+            $this->write_csv($array); 
+        }
+    }
 
 //--------------------------
 
@@ -48,13 +50,11 @@ class Filestore {
         if (is_readable($this->filename) && filesize($this->filename) > 0) 
         {
             $handle = fopen($this->filename, "r");
-            $contents = (fread($handle, filesize($this->filename)));
-            $contents = trim($contents);
+            $contents = fread($handle, filesize($this->filename));
+            $contents_array = explode("\n", $contents);
             fclose($handle);
-            return $contents;
-        }
-        $contents = implode("", $list_array);
-        return $contents;   
+            return $contents_array;
+        } 
     }
 
     //Writes each element in $array to a new line in $this->filename
@@ -99,6 +99,4 @@ class Filestore {
             fclose($handle);
         }
     }
-
-
 }
